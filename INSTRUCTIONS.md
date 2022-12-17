@@ -4,6 +4,8 @@
 
 Elaborate on your learnings here in `INSTRUCTIONS.md`
 
+I review bootstrap and component concepts
+
 ## Background
 
 The first step to any React app is to create a component and render it to the
