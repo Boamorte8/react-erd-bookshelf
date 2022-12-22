@@ -75,3 +75,13 @@ export function useAuth() {
   }
   return context
 }
+
+export function useClient() {
+  const {
+    user: {token},
+  } = useAuth()
+  return React.useCallback(
+    (endpoint, config) => client(endpoint, {...config, token}),
+    [token],
+  )
+}
