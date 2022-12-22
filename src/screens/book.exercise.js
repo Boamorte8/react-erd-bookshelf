@@ -136,17 +136,14 @@ function NotesTextarea({listItem, user}) {
             css={{marginLeft: 6, fontSize: '0.7em'}}
           />
         ) : null}
+        {isLoading ? <Spinner /> : null}
       </div>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <Textarea
-          id="notes"
-          defaultValue={listItem.notes}
-          onChange={handleNotesChange}
-          css={{width: '100%', minHeight: 300}}
-        />
-      )}
+      <Textarea
+        id="notes"
+        defaultValue={listItem.notes}
+        onChange={handleNotesChange}
+        css={{width: '100%', minHeight: 300}}
+      />
     </React.Fragment>
   )
 }

@@ -25,12 +25,23 @@ export const useBook = (bookId, {token}) => {
   return data ?? loadingBook
 }
 
+export const setQueryDataForBook = book => {
+  queryCache.setQueryData(['book', {bookId: book.id}], book)
+}
+
 const getBookSearchConfig = (query, token) => ({
   queryKey: ['bookSearch', {query}],
   queryFn: () =>
     client(`books?query=${encodeURIComponent(query)}`, {token}).then(
       data => data.books,
     ),
+  config: {
+    onSuccess(books) {
+      for (const book of books) {
+        setQueryDataForBook(book)
+      }
+    },
+  },
 })
 
 export const useBookSearch = (query, {token}) => {
